@@ -53,7 +53,6 @@ function favoriteAMessage() {
   if(!favoriteMessages.length
     || !localStorage
     || localStorage.favorites === "[]"
-    || localStorage.favorites === []
     || favoriteMessages === []){
     favoriteMessages.push(new Message(currentMessage));
   } else {
@@ -67,7 +66,7 @@ function favoriteAMessage() {
       favoriteMessages.push(new Message(currentMessage));
     }
   }
-  
+
   updateLocalStorage();
 }
 
@@ -110,15 +109,16 @@ for (var i = 0; i < favoriteMessages.length; i++) {
 function updateLocalStorage(){
   var favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
-  console.log(favoriteMessages)
-  console.log(localStorage)
+  console.log("favoriteMEssages", favoriteMessages);
+  console.log("localStorage", localStorage);
 
-  if (localStorage & localStorage.favorites === "[]"
-    || localStorage.favorites === []
-    || favoriteMessages === []) {
-    localStorage.clear();
-  }
-
+  if (localStorage) {
+    if (localStorage.favorites === "[]"
+      || localStorage.favorites === []
+      || favoriteMessages === []) {
+         localStorage.clear();
+    }
+}
 }
 
 function getLocalStorage() {
