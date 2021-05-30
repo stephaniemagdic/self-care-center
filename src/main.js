@@ -100,8 +100,6 @@ for (var i = 0; i < favoriteMessages.length; i++) {
     }
   }
 
-  //stringify the updated array and set that equal to the new favorites key through setItem (updateLocalStorage)
-  //get that new array and parse it and set that equal to the favoriteMessages array.
   updateLocalStorage();
   renderFavorites();
 }
@@ -120,10 +118,6 @@ if (parsedList !== undefined && parsedList !== null) {
   favoriteMessages = parsedList;
 }
 }
-//when the parsedList is not undefined/has something in it, then set the parsed List equal to the new array.
-//
-// if (parsedList.length > 1 && !parsedList)
-// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
