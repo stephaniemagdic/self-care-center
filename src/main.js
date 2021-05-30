@@ -1,7 +1,6 @@
 /*---------Query Selectors and global variables ---------------*/
 var currentMessage;
 var favoriteMessages = [];
-
 var form = document.querySelector('form');
 var radio = form.elements['message-type'];
 var submit = document.getElementById("submit")
@@ -12,9 +11,6 @@ var viewFavoriteMessagesButton = document.querySelector(".view-saved");
 var homeButton = document.querySelector(".home-button");
 var messagesGrid = document.querySelector(".saved-messages-grid");
 var displayMessageArticle = document.querySelector(".display-message");
-
-
-
 
 /*---------Event Listeners ---------------*/
 submit.addEventListener("click", displayMessage);
@@ -29,7 +25,6 @@ displayMessageArticle.addEventListener("click", function(e) {
     favoriteAMessage()
   }
 });
-
 
 /*---------Functions ---------------*/
 function displayMessage() {
@@ -66,6 +61,7 @@ function favoriteAMessage() {
 
     if(match === false) {
       favoriteMessages.push(new Message(currentMessage));
+      console.log(favoriteMessages, "<--does this have a comma after each property?")
     }
 
     updateLocalStorage();
@@ -73,7 +69,7 @@ function favoriteAMessage() {
 }
 
 function renderFavorites() {
-  getLocalStorage();
+  if (localStorage) { getLocalStorage() };
   messagesGrid.innerHTML = '';
   for (var i = 0; i < favoriteMessages.length; i++) {
     messagesGrid.innerHTML +=
@@ -104,27 +100,30 @@ for (var i = 0; i < favoriteMessages.length; i++) {
     }
   }
 
-  renderFavorites();
+  //stringify the updated array and set that equal to the new favorites key through setItem (updateLocalStorage)
+  //get that new array and parse it and set that equal to the favoriteMessages array.
   updateLocalStorage();
+  renderFavorites();
 }
 
 function updateLocalStorage(){
-  console.log(favoritesList);
-  var favoritesList = JSON.stringify(`${favoriteMessages}`);
-  console.log("stringified", favoritesList)
+  var favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
+  console.log(favoriteMessages)
+  console.log(localStorage)
 }
 
-function getLocalStorage(){
-  var favoritesList = localStorage.getItem("favorites");
-  var parsedList = JSON.parse(favoritesList);
-  console.log("parsed", parsedList)
+function getLocalStorage() {
+  var parsedList = JSON.parse(localStorage.getItem("favorites"));
 
-  if(parsedList){
-    favoriteMessages.push(parsedList);
-  }
-
+if (parsedList !== undefined && parsedList !== null) {
+  favoriteMessages = parsedList;
 }
+}
+//when the parsedList is not undefined/has something in it, then set the parsed List equal to the new array.
+//
+// if (parsedList.length > 1 && !parsedList)
+// }
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
