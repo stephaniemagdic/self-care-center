@@ -40,7 +40,7 @@ h2 {
   margin: 6px;
   font-weight: 600;
 }
-          /*-----Form & Form Container ----*/
+                  /*-----Form & Form Container ----*/
 
 .form-container {
   margin: auto;
@@ -66,36 +66,7 @@ label {
 }
 
 
-#mantra {
-  margin-left: 60px;
-  display: inline;
-}
-
-/* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
-#submit,
-.view-saved,
-.delete-button,
-.home-button {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  background-color: #134d71;
-  color: #ffffff;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 15px;
-  font-weight: 100;
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-
-#submit {
-  display: block;
-  margin: 10px auto;
-}
-
-/* <!---View and save your message---> */
+                  /* <!---View and save your message---> */
 
 .display-message {
   background-color: #ffffff;
@@ -121,6 +92,30 @@ img {
   max-height: 50%;
 }
 
+
+/* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
+#submit,
+.view-saved,
+.delete-button,
+.home-button {
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  font-weight: 100;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+#submit {
+  display: block;
+  margin: 10px auto;
+}
 
 /* ~~~~~~~~~~~~~~ FAVORITE MESSAGES SECTION ~~~~~~~~~~~~~~~~ */
 .favorites-page {

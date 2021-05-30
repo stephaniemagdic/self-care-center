@@ -14,7 +14,7 @@ var displayMessageArticle = document.querySelector(".display-message");
 
 
 /*---------Event Listeners ---------------*/
-window.addEventListener('load', syncFavoriteMessages);
+window.addEventListener("load", syncFavoriteMessages);
 submit.addEventListener("click", displayMessage);
 viewFavoriteMessagesButton.addEventListener("click", showFavorites);
 homeButton.addEventListener("click", showHomePage);
@@ -23,7 +23,7 @@ favoritesPage.addEventListener("click", function(event) {
 });
 
 displayMessageArticle.addEventListener("click", function(e) {
-  if(e.target.nodeName === "BUTTON"){
+  if (e.target.nodeName === "BUTTON") {
     favoriteAMessage()
   }
 });
@@ -41,7 +41,7 @@ function displayMessage() {
   event.preventDefault();
   if (radio.value === 'affirmation') {
     currentMessage = affirmations[getRandomIndex(affirmations)];
-  } else if(radio.value === 'mantra'){
+  } else if (radio.value === 'mantra') {
     currentMessage = mantras[getRandomIndex(mantras)];
   } else {
     return;
@@ -60,19 +60,20 @@ function renderCurrentMessage(){
 
 function favoriteAMessage() {
   var match = false;
-  if(!favoriteMessages.length
+  if (
+    !favoriteMessages.length
     || !localStorage
     || localStorage.favorites === "[]"
-    || favoriteMessages === []){
+  ) {
     favoriteMessages.push(new Message(currentMessage));
   } else {
     for (var i = 0; i < favoriteMessages.length; i ++) {
-        if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
-          match = true;
-        }
+      if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
+        match = true;
+      }
     }
 
-    if(match === false) {
+    if (!match) {
       favoriteMessages.push(new Message(currentMessage));
     }
   }
@@ -81,7 +82,10 @@ function favoriteAMessage() {
 }
 
 function renderFavorites() {
-  if (localStorage) { getLocalStorage() };
+  if (localStorage) {
+    getLocalStorage()
+  };
+
   messagesGrid.innerHTML = '';
   for (var i = 0; i < favoriteMessages.length; i++) {
     messagesGrid.innerHTML +=
@@ -119,16 +123,13 @@ for (var i = 0; i < favoriteMessages.length; i++) {
 function updateLocalStorage(){
   var favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
-  console.log("favoriteMEssages", favoriteMessages);
-  console.log("localStorage", localStorage);
-
   if (localStorage) {
     if (localStorage.favorites === "[]"
       || localStorage.favorites === []
       || favoriteMessages === []) {
          localStorage.clear();
     }
-}
+  }
 }
 
 function getLocalStorage() {
