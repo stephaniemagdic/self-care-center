@@ -66,9 +66,8 @@ function favoriteAMessage() {
     if(match === false) {
       favoriteMessages.push(new Message(currentMessage));
     }
-
-
   }
+  
   updateLocalStorage();
 }
 
