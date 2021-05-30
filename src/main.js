@@ -1,7 +1,6 @@
 /*---------Query Selectors and global variables ---------------*/
 var currentMessage;
 var favoriteMessages = [];
-console.log("favoriteMEssages", favoriteMessages)
 var form = document.querySelector('form');
 var radio = form.elements['message-type'];
 var submit = document.getElementById("submit")
@@ -15,7 +14,7 @@ var displayMessageArticle = document.querySelector(".display-message");
 
 
 /*---------Event Listeners ---------------*/
-// window.addEventListener('load', syncFavoriteMessages);
+window.addEventListener('load', syncFavoriteMessages);
 submit.addEventListener("click", displayMessage);
 viewFavoriteMessagesButton.addEventListener("click", showFavorites);
 homeButton.addEventListener("click", showHomePage);
@@ -31,14 +30,11 @@ displayMessageArticle.addEventListener("click", function(e) {
 
 
 /*---------Functions ---------------*/
-
 function syncFavoriteMessages () {
-  var favoriteMessages = [];
   var localStorageFavorites = JSON.parse(localStorage.getItem("favorites"));
   if (localStorageFavorites) {
     favoriteMessages = localStorageFavorites;
   }
-  return favoriteMessages;
 }
 
 function displayMessage() {
@@ -64,10 +60,6 @@ function renderCurrentMessage(){
 
 function favoriteAMessage() {
   var match = false;
-  // //take local storage and update the
-  // var localStorageFavorites = localStorage.getItem("favorites");
-  // // if localStorageFavorites { favoriteMessages = localStorageFavorites}
-
   if(!favoriteMessages.length
     || !localStorage
     || localStorage.favorites === "[]"
