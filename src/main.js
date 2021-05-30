@@ -50,11 +50,11 @@ function renderCurrentMessage(){
 
 function favoriteAMessage() {
   var match = false;
-  console.log(favoriteMessages, "--favorite messages");
-  console.log(localStorage, "--local storage");
-  if(!favoriteMessages.length || !localStorage || localStorage.favorites === "[]" || localStorage.favorites === [] || favoriteMessages === []){
-    console.log(favoriteMessages, "--favorite messages");
-    console.log(localStorage.favorites, "--local storage");
+  if(!favoriteMessages.length
+    || !localStorage
+    || localStorage.favorites === "[]"
+    || localStorage.favorites === []
+    || favoriteMessages === []){
     favoriteMessages.push(new Message(currentMessage));
   } else {
     for (var i = 0; i < favoriteMessages.length; i ++) {
@@ -70,12 +70,9 @@ function favoriteAMessage() {
 
   }
   updateLocalStorage();
-  console.log(localStorage.favorites, "--local storage");
-  console.log(favoriteMessages, "--favorite messages");
 }
 
 function renderFavorites() {
-  //
   if (localStorage) { getLocalStorage() };
   messagesGrid.innerHTML = '';
   for (var i = 0; i < favoriteMessages.length; i++) {
@@ -117,28 +114,23 @@ function updateLocalStorage(){
   console.log(favoriteMessages)
   console.log(localStorage)
 
-  // if(!favoriteMessages.length || favoriteMessages === "[]" || favoriteMessages === [])
-  //
-  if (localStorage & localStorage.favorites === "[]" || localStorage.favorites === [] || favoriteMessages === []) {
+  if (localStorage & localStorage.favorites === "[]"
+    || localStorage.favorites === []
+    || favoriteMessages === []) {
     localStorage.clear();
-}
+  }
+
 }
 
 function getLocalStorage() {
-  //to disply favorites, go grab the list in json and parse it
   var parsedList = JSON.parse(localStorage.getItem("favorites"));
-  // if that parsedList or favoriteMEssages is undefined then clear storage
-  // also ressign the global varible, favoritesMessages === []
-  // if it is not empty then reassigned that parsed data to the favoriteMEssages array.
-
-
   if (!parsedList) {
     localStorage.clear();
     favoriteMessages = [];
   } else {
     favoriteMessages = parsedList;
   }
-  }
+}
 
 
 function getRandomIndex(array) {
