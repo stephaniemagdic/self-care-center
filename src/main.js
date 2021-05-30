@@ -54,7 +54,7 @@ function renderCurrentMessage(){
   displayMessageSection.innerHTML =
   `
   <p>${currentMessage}</p>
-  <button class="favorite">&#128153;</button>
+  <button class="favorite" alt="favorite-button">&#128153;</button>
   `
 }
 
