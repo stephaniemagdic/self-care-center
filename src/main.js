@@ -67,10 +67,13 @@ function favoriteAMessage() {
     if(match === false) {
       favoriteMessages.push(new Message(currentMessage));
     }
+
+    updateLocalStorage();
   }
 }
 
 function renderFavorites() {
+  getLocalStorage();
   messagesGrid.innerHTML = '';
   for (var i = 0; i < favoriteMessages.length; i++) {
     messagesGrid.innerHTML +=
@@ -102,6 +105,25 @@ for (var i = 0; i < favoriteMessages.length; i++) {
   }
 
   renderFavorites();
+  updateLocalStorage();
+}
+
+function updateLocalStorage(){
+  console.log(favoritesList);
+  var favoritesList = JSON.stringify(`${favoriteMessages}`);
+  console.log("stringified", favoritesList)
+  localStorage.setItem("favorites", favoritesList);
+}
+
+function getLocalStorage(){
+  var favoritesList = localStorage.getItem("favorites");
+  var parsedList = JSON.parse(favoritesList);
+  console.log("parsed", parsedList)
+
+  if(parsedList){
+    favoriteMessages.push(parsedList);
+  }
+
 }
 
 function getRandomIndex(array) {
