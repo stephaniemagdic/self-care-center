@@ -1,34 +1,21 @@
-/* font-family: 'Quicksand', sans-serif;
-COLORS
-light-yellow - #f7e4bf;
-light-blue - #78a7c6;
-dark-blue - #134d71;
-white - #ffffff;
-black - #000000;
-*/
-
-/* go back and seperate concerns */
-  /* ~~~~~ MAIN POSTER SECTION ~~~~~ */ /* ~~~~~ GLOBAL RULES ~~~~~ */
-
-html {
+body {
   background: linear-gradient(#134d71, #78a7c6, #f7e4bf);
   background-attachment: fixed;
-  /* height: 100%; */
   display: flex;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  /* height: 100%; */
-  margin: 0;
-  /* background-repeat: no-repeat;
-  background-attachment: fixed; */
+.hidden {
+  display: none!important;
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
-  padding-top: 17px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
 }
 
 h1 {
@@ -36,12 +23,14 @@ h1 {
   text-align: center;
   margin-bottom: 40px;
   margin-top: 22px;
+  font-weight: bold !important;
 }
 
-.sparkle {
-  height: 1em;
-  width: 1em;
-  padding: 0;
+/* ~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~ */
+.choose-message {
+  text-align: center;
+  min-width: 320px;
+  height: 52px;
 }
 
 h2 {
@@ -49,92 +38,119 @@ h2 {
   text-align: center;
   font-size: 1em;
   margin: 6px;
+  font-weight: 600;
 }
-
-.choose-message {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  min-width: 320px;
-  height: 52px;
-}
+          /*-----Form & Form Container ----*/
 
 .form-container {
+  margin: auto;
   background-color: #ffffff;
   border: solid white 1px;
   border-radius: 10px;
+  height: 70px;
+  width: 385px;
 }
 
 form {
-  height: 1em;
-  border-radius: 10px;
-  width: 370px;
+  height: 100%
+  width: 100%
   background-color: #ffffff;
   font-style: italic;
-}
+  margin: 10px;
 
-#submit,
-.favorite {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  height: 20px;
-  width: 120px;
-  background-color: #134d71
-  font-color: #ffffff;
 }
-
-.submit {
-  margin-top: 31px;
-  height: 25px;
-  width: 25px;
-  margin-left: 5px;
-}
-
-/* button {
-  margin: 0px;
-} */
 
 label {
-  margin-right: 80px;
-  margin: 20px;
+  margin-right: 40px;
   font-size: 10px;
-  padding-top: 3px;
-  padding-bottom: 6px;
 }
 
+
+#mantra {
+  margin-left: 60px;
+  display: inline;
+}
+
+/* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
+
+#submit {
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  display: block;
+  background-color: #134d71;
+  color: #ffffff;
+  margin: 15px auto;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left:20px;
+  padding-right: 20px;
+}
+
+.view-saved {
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.delete-button,
+.home-button {
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+/* <!---View and save your message---> */
+
 .display-message {
-  display: flex;
   background-color: #ffffff;
-  justify-content: center;
   text-align: center;
   height: 90px;
-  min-width: 470px;
-  max-width: 800px;
-  margin-top: 58px;
+  margin-top: 110px;
   border-radius: 10px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-saved-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 img {
-  padding: 14px 207px;
-  height: 3em;
-  width: 3em;
+  max-width: 50%;
+  max-height: 50%;
 }
 
-/* span {
-  display: flex;
-}
 
-.viewSaved {
-  justify-content: center;
-} */
-
-.hidden {
-  display: none!important;
-}
-
-/*--- FAVORITE MESSAGES SECTION --*/
+/* ~~~~~~~~~~~~~~ FAVORITE MESSAGES SECTION ~~~~~~~~~~~~~~~~ */
 .favorites-page {
-  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.favorite {
+  margin: 5px;
+  border-width: medium;
+  border-color: #f7e4bf;
+  border-radius: 10px;
+  background-color: #f7e4bf;
 }
 
 .saved-messages-grid {
@@ -145,13 +161,9 @@ img {
 }
 
 .message-box {
-  background: black;
-  color: white;
-  height: 340px;
-  padding: 25px;
-  width: 425px;
-}
-
-.favorite-message-paragraph {
-  text-decoration: underline;
+  background-color: #ffffff;
+  text-align: center;
+  height: 90px;
+  border-radius: 10px;
+  width: 500px;
 }
