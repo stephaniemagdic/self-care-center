@@ -62,7 +62,8 @@ form {
 
 label {
   margin-right: 40px;
-  font-size: 10px;
+  font-size: 15px;
+  font-weight: lighter;
 }
 
 
@@ -72,31 +73,8 @@ label {
 }
 
 /* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
-
-#submit {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  display: block;
-  background-color: #134d71;
-  color: #ffffff;
-  margin: 15px auto;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left:20px;
-  padding-right: 20px;
-}
-
-.view-saved {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  background-color: #134d71;
-  color: #ffffff;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
+#submit,
+.view-saved,
 .delete-button,
 .home-button {
   font-family:'Quicksand', sans-serif;
@@ -107,8 +85,16 @@ label {
   border-color: transparent;
   padding-left: 20px;
   padding-right: 20px;
+  font-size: 15px;
+  font-weight: 100;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
+#submit {
+  display: block;
+  margin: 10px auto;
+}
 
 /* <!---View and save your message---> */
 
