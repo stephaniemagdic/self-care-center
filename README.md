@@ -53,6 +53,6 @@
 
 ## Additional Links
 
-  + View the GitHub repo [here.](https://stephaniemagdic.github.io/self-care-center/)
-  + View the app [here.](https://github.com/stephaniemagdic/self-care-center)
+  + View the GitHub repo [here.](https://github.com/stephaniemagdic/self-care-center)
+  + View the app [here.](https://stephaniemagdic.github.io/self-care-center/)
   + View the project set up, guidelines, and rubric [here.](https://frontend.turing.edu/projects/module-1/self-care-center.html)
