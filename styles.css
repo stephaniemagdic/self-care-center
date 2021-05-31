@@ -26,7 +26,7 @@ h1 {
   font-weight: bold !important;
 }
 
-/* ~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~ */
+/* -------------------------------- HOME ---------------------------------*/
 .choose-message {
   text-align: center;
   min-width: 320px;
@@ -66,7 +66,7 @@ label {
 }
 
 
-                  /* <!---View and save your message---> */
+                  /* ----Message Display---- */
 
 .display-message {
   background-color: #ffffff;
@@ -93,7 +93,7 @@ img {
 }
 
 
-/* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
+/* -------------------------------- Buttons -------------------------------- */
 #submit,
 .view-saved,
 .delete-button,
@@ -117,7 +117,7 @@ img {
   margin: 10px auto;
 }
 
-/* ~~~~~~~~~~~~~~ FAVORITE MESSAGES SECTION ~~~~~~~~~~~~~~~~ */
+/* ------------------------ FAVORITE MESSAGES SECTION  ---------------------- */
 .favorites-page {
   display: flex;
   align-items: center;
