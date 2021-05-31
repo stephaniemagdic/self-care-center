@@ -12,7 +12,9 @@ var homeButton = document.querySelector(".home-button");
 var messagesGrid = document.querySelector(".saved-messages-grid");
 var displayMessageArticle = document.querySelector(".display-message");
 
+
 /*---------Event Listeners ---------------*/
+window.addEventListener("load", syncFavoriteMessages);
 submit.addEventListener("click", displayMessage);
 viewFavoriteMessagesButton.addEventListener("click", showFavorites);
 homeButton.addEventListener("click", showHomePage);
@@ -21,17 +23,25 @@ favoritesPage.addEventListener("click", function(event) {
 });
 
 displayMessageArticle.addEventListener("click", function(e) {
-  if(e.target.nodeName === "BUTTON"){
+  if (e.target.nodeName === "BUTTON") {
     favoriteAMessage()
   }
 });
 
+
 /*---------Functions ---------------*/
+function syncFavoriteMessages () {
+  var localStorageFavorites = JSON.parse(localStorage.getItem("favorites"));
+  if (localStorageFavorites) {
+    favoriteMessages = localStorageFavorites;
+  }
+}
+
 function displayMessage() {
   event.preventDefault();
   if (radio.value === 'affirmation') {
     currentMessage = affirmations[getRandomIndex(affirmations)];
-  } else if(radio.value === 'mantra'){
+  } else if (radio.value === 'mantra') {
     currentMessage = mantras[getRandomIndex(mantras)];
   } else {
     return;
@@ -44,32 +54,38 @@ function renderCurrentMessage(){
   displayMessageSection.innerHTML =
   `
   <p>${currentMessage}</p>
-  <button class="favorite">&#128153;</button>
+  <button class="favorite" alt="favorite-button">&#128153;</button>
   `
 }
 
 function favoriteAMessage() {
   var match = false;
-  if(!favoriteMessages.length){
+  if (
+    !favoriteMessages.length
+    || !localStorage
+    || localStorage.favorites === "[]"
+  ) {
     favoriteMessages.push(new Message(currentMessage));
   } else {
     for (var i = 0; i < favoriteMessages.length; i ++) {
-        if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
-          match = true;
-        }
+      if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
+        match = true;
+      }
     }
 
-    if(match === false) {
+    if (!match) {
       favoriteMessages.push(new Message(currentMessage));
-      console.log(favoriteMessages, "<--does this have a comma after each property?")
     }
-
-    updateLocalStorage();
   }
+
+  updateLocalStorage();
 }
 
 function renderFavorites() {
-  if (localStorage) { getLocalStorage() };
+  if (localStorage) {
+    getLocalStorage()
+  };
+
   messagesGrid.innerHTML = '';
   for (var i = 0; i < favoriteMessages.length; i++) {
     messagesGrid.innerHTML +=
@@ -107,16 +123,23 @@ for (var i = 0; i < favoriteMessages.length; i++) {
 function updateLocalStorage(){
   var favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
-  console.log(favoriteMessages)
-  console.log(localStorage)
+  if (localStorage) {
+    if (localStorage.favorites === "[]"
+      || localStorage.favorites === []
+      || favoriteMessages === []) {
+         localStorage.clear();
+    }
+  }
 }
 
 function getLocalStorage() {
   var parsedList = JSON.parse(localStorage.getItem("favorites"));
-
-if (parsedList !== undefined && parsedList !== null) {
-  favoriteMessages = parsedList;
-}
+  if (!parsedList) {
+    localStorage.clear();
+    favoriteMessages = [];
+  } else {
+    favoriteMessages = parsedList;
+  }
 }
 
 function getRandomIndex(array) {

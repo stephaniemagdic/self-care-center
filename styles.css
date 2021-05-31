@@ -26,7 +26,7 @@ h1 {
   font-weight: bold !important;
 }
 
-/* ~~~~~~~~~~~~~~ HOME ~~~~~~~~~~~~~~~~ */
+/* -------------------------------- HOME ---------------------------------*/
 .choose-message {
   text-align: center;
   min-width: 320px;
@@ -40,7 +40,7 @@ h2 {
   margin: 6px;
   font-weight: 600;
 }
-          /*-----Form & Form Container ----*/
+                  /*-----Form & Form Container ----*/
 
 .form-container {
   margin: auto;
@@ -57,60 +57,16 @@ form {
   background-color: #ffffff;
   font-style: italic;
   margin: 10px;
-
 }
 
 label {
   margin-right: 40px;
-  font-size: 10px;
+  font-size: 15px;
+  font-weight: lighter;
 }
 
 
-#mantra {
-  margin-left: 60px;
-  display: inline;
-}
-
-/* ~~~~~~~~~~~~~~ Buttons ~~~~~~~~~~~~~~~~ */
-
-#submit {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  display: block;
-  background-color: #134d71;
-  color: #ffffff;
-  margin: 15px auto;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left:20px;
-  padding-right: 20px;
-}
-
-.view-saved {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  background-color: #134d71;
-  color: #ffffff;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.delete-button,
-.home-button {
-  font-family:'Quicksand', sans-serif;
-  text-align: center;
-  background-color: #134d71;
-  color: #ffffff;
-  border-radius: 5px;
-  border-color: transparent;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-
-/* <!---View and save your message---> */
+                  /* ----Message Display---- */
 
 .display-message {
   background-color: #ffffff;
@@ -137,7 +93,31 @@ img {
 }
 
 
-/* ~~~~~~~~~~~~~~ FAVORITE MESSAGES SECTION ~~~~~~~~~~~~~~~~ */
+/* -------------------------------- Buttons -------------------------------- */
+#submit,
+.view-saved,
+.delete-button,
+.home-button {
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  font-weight: 100;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+#submit {
+  display: block;
+  margin: 10px auto;
+}
+
+/* ------------------------ FAVORITE MESSAGES SECTION  ---------------------- */
 .favorites-page {
   display: flex;
   align-items: center;
