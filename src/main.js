@@ -1,6 +1,6 @@
 /*---------Query Selectors and global variables ---------------*/
-var currentMessage;
 var favoriteMessages = [];
+var currentMessage;
 var form = document.querySelector('form');
 var radio = form.elements['message-type'];
 var submit = document.getElementById("submit")
@@ -60,13 +60,6 @@ function renderCurrentMessage(){
 
 function favoriteAMessage() {
   var match = false;
-  if (
-    !favoriteMessages.length
-    || !localStorage
-    || localStorage.favorites === "[]"
-  ) {
-    favoriteMessages.push(new Message(currentMessage));
-  } else {
     for (var i = 0; i < favoriteMessages.length; i ++) {
       if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
         match = true;
@@ -76,7 +69,6 @@ function favoriteAMessage() {
     if (!match) {
       favoriteMessages.push(new Message(currentMessage));
     }
-  }
 
   updateLocalStorage();
 }
@@ -123,13 +115,6 @@ for (var i = 0; i < favoriteMessages.length; i++) {
 function updateLocalStorage(){
   var favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
-  if (localStorage) {
-    if (localStorage.favorites === "[]"
-      || localStorage.favorites === []
-      || favoriteMessages === []) {
-         localStorage.clear();
-    }
-  }
 }
 
 function getLocalStorage() {
