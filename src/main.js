@@ -1,44 +1,46 @@
 /*---------Query Selectors and global variables ---------------*/
-var favoriteMessages = [];
-var currentMessage;
-var form = document.querySelector('form');
-var radio = form.elements['message-type'];
-var submit = document.getElementById("submit")
-var displayMessageSection = document.querySelector(".display-message");
-var homePageSection = document.querySelector(".main-page")
-var favoritesPage = document.querySelector(".favorites-page")
-var viewFavoriteMessagesButton = document.querySelector(".view-saved");
-var homeButton = document.querySelector(".home-button");
-var messagesGrid = document.querySelector(".saved-messages-grid");
-var displayMessageArticle = document.querySelector(".display-message");
-
+let favoriteMessages = [];
+let currentMessage;
+const form = document.querySelector('form');
+const radio = form.elements['message-type'];
+const submit = document.getElementById("submit")
+const displayMessageSection = document.querySelector('.display-message');
+const homePageSection = document.querySelector('.main-page')
+const favoritesPage = document.querySelector('.favorites-page')
+const viewFavoriteMessagesButton = document.querySelector('.view-saved');
+const messagesGrid = document.querySelector('.saved-messages-grid');
+const displayMessageArticle = document.querySelector('.display-message');
 
 /*---------Event Listeners ---------------*/
-window.addEventListener("load", syncFavoriteMessages);
-submit.addEventListener("click", displayMessage);
-viewFavoriteMessagesButton.addEventListener("click", showFavorites);
-homeButton.addEventListener("click", showHomePage);
-favoritesPage.addEventListener("click", function(event) {
-  deleteFavoriteMessage(event);
+window.addEventListener('load', () => syncFavoriteMessages());
+submit.addEventListener('click', () => displayMessage());
+viewFavoriteMessagesButton.addEventListener('click', () => showFavorites());
+favoritesPage.addEventListener('click', (e) => {
+  if (e.target.classList.contains('home-button')) {
+    showHomePage()};
+});
+favoritesPage.addEventListener('click', (event) => {
+  if (event.target.id === "delete") {
+    deleteFavoriteMessage(event);
+  }
 });
 
-displayMessageArticle.addEventListener("click", function(e) {
-  if (e.target.nodeName === "BUTTON") {
+displayMessageArticle.addEventListener('click', (event) => {
+  if (event.target.nodeName === 'BUTTON') {
     favoriteAMessage()
   }
 });
 
-
 /*---------Functions ---------------*/
-function syncFavoriteMessages () {
-  var localStorageFavorites = JSON.parse(localStorage.getItem("favorites"));
+
+const syncFavoriteMessages = () => {
+  const localStorageFavorites = JSON.parse(localStorage.getItem('favorites'));
   if (localStorageFavorites) {
     favoriteMessages = localStorageFavorites;
   }
 }
 
-function displayMessage() {
-  event.preventDefault();
+const displayMessage = () => {
   if (radio.value === 'affirmation') {
     currentMessage = affirmations[getRandomIndex(affirmations)];
   } else if (radio.value === 'mantra') {
@@ -50,7 +52,7 @@ function displayMessage() {
   renderCurrentMessage();
 }
 
-function renderCurrentMessage(){
+const renderCurrentMessage = () => {
   displayMessageSection.innerHTML =
   `
   <p>${currentMessage}</p>
@@ -58,67 +60,66 @@ function renderCurrentMessage(){
   `
 }
 
-function favoriteAMessage() {
-  var match = false;
-    for (var i = 0; i < favoriteMessages.length; i ++) {
-      if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
-        match = true;
-      }
+const favoriteAMessage = () => {
+  let match = false;
+  for (let i = 0; i < favoriteMessages.length; i ++) {
+    if (`${favoriteMessages[i].messageText}` === `${currentMessage}`) {
+      match = true;
     }
-
-    if (!match) {
-      favoriteMessages.push(new Message(currentMessage));
-    }
+  }
+  
+  if (!match) {
+    favoriteMessages.push(new Message(currentMessage));
+  }
 
   updateLocalStorage();
 }
 
-function renderFavorites() {
+const renderFavorites = () => {
   if (localStorage) {
     getLocalStorage()
   };
 
   messagesGrid.innerHTML = '';
-  for (var i = 0; i < favoriteMessages.length; i++) {
+  for (let i = 0; i < favoriteMessages.length; i++) {
     messagesGrid.innerHTML +=
     `
     <section class="message-box" id="${favoriteMessages[i].id}">
       <p class="favorite-message-paragraph">${favoriteMessages[i].messageText}<p>
-      <button class="delete-button">Delete</button>
+      <button class="delete-button" id="delete">Delete</button>
     </section>
       `
-    }
+  }
 }
 
-function showFavorites() {
+const showFavorites = () => {
   homePageSection.classList.add('hidden');
   favoritesPage.classList.remove('hidden');
   renderFavorites();
 }
 
-function showHomePage(){
+const showHomePage = () => {
   homePageSection.classList.remove('hidden');
   favoritesPage.classList.add('hidden');
 }
 
-function deleteFavoriteMessage(e) {
-for (var i = 0; i < favoriteMessages.length; i++) {
+const deleteFavoriteMessage = (e) => {
+  for (let i = 0; i < favoriteMessages.length; i++) {
     if (`${e.target.closest('section').id}` === `${favoriteMessages[i].id}`) {
       favoriteMessages.splice(i, 1);
     }
   }
-
   updateLocalStorage();
   renderFavorites();
 }
 
-function updateLocalStorage(){
-  var favoritesList = JSON.stringify(favoriteMessages);
+const updateLocalStorage = () => {
+  const favoritesList = JSON.stringify(favoriteMessages);
   localStorage.setItem("favorites", favoritesList);
 }
 
-function getLocalStorage() {
-  var parsedList = JSON.parse(localStorage.getItem("favorites"));
+const getLocalStorage = () => {
+  const parsedList = JSON.parse(localStorage.getItem("favorites"));
   if (!parsedList) {
     localStorage.clear();
     favoriteMessages = [];
@@ -127,6 +128,6 @@ function getLocalStorage() {
   }
 }
 
-function getRandomIndex(array) {
+const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
