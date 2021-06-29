@@ -1,6 +1,8 @@
 # Self Care Center
+## Week 3 (Mod1) at Turing School of Software and Design
 
 ## Project Description:
+[Project Spec](https://frontend.turing.edu/projects/module-1/self-care-center.html)
 
   **Description**
   The Self Care Center is an affirmation and mantra generator. A user can receive and favorite randomly generated affirmations and mantras. Those messages could be revisited and removed on the favorite messages page. When the page is refreshed or navigated away from, local storage will hold on to the favorited messages so that upon reload, the favorite messages will not be lost.
