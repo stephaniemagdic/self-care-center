@@ -1,4 +1,4 @@
-# [Self Care Center](https://frontend.turing.edu/projects/module-1/self-care-center.html)
+# [Self Care Center](https://stephaniemagdic.github.io/self-care-center/)
 ## Week 3 (Mod1) at Turing School of Software and Design
 
 ## Project Description:
